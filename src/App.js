@@ -16,7 +16,7 @@ class App extends React.Component {
         var ind = Math.floor(Math.random()*(c.length));
         var random = c.splice(ind,1);
         cards = cards.concat(random);
-  }
+    }
   this.initialState = {
       statuses: ["down", "down", "down", "down", "down", "down", "down", "down", "down", "down"],
       faces: cards,
