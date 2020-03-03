@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Card from './Card.js';
-const c1 = './c1.png';
+const c1 = './1.jpg';
 const c2 = "./c2.png";
 const c3 = "./c3.png";
 const c4 = "./c4.jpg";
@@ -16,7 +16,7 @@ class App extends React.Component {
         var ind = Math.floor(Math.random()*(c.length));
         var random = c.splice(ind,1);
         cards = cards.concat(random);
-  }
+    }
   this.initialState = {
       statuses: ["down", "down", "down", "down", "down", "down", "down", "down", "down", "down"],
       faces: cards,
@@ -52,3 +52,6 @@ flipCard(index){
   }
 }
 export default App;
+
+
+// jus an intsnace AAAAAAAAAA
