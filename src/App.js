@@ -2,10 +2,10 @@ import React from 'react';
 import './App.css';
 import Card from './Card.js';
 const c1 = './1.jpg';
-const c2 = "./c2.png";
-const c3 = "./c3.png";
-const c4 = "./c4.jpg";
-const c5 = "./c5.png";
+const c2 = "./2.jpg";
+const c3 = "./3.jpg";
+const c4 = "./4.jpg";
+const c5 = "./5.jpg";
 
 class App extends React.Component {
   constructor(props){
