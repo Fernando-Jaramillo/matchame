@@ -10,6 +10,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 const c1 = './1.jpg';
 const c2 = "./2.jpg";
 const c3 = "./3.jpg";
@@ -51,12 +52,13 @@ flipCard(index){
 
   render(){ 
       return (
+        <>
         <div>
           <Router >
         <div>
         <Switch>
           <Route path='/card'>
-            <Board/>
+          <Board faces = {this.state.faces} statuses = {this.state.statuses} flipCard={(i) => this.flipCard(i)}/>
           </Route>
 
           <Route path='/'>
@@ -66,6 +68,9 @@ flipCard(index){
         </div>
       </Router>
           </div>
+          
+        
+        </>
       )
   }
 }
