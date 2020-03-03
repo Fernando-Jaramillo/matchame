@@ -11,7 +11,6 @@ export default function Card({face, clicker, status}){
             card = <img className='sizecards' src={back} id='back' onClick={() => clicker()}/>
         }
     return(
-        <div>{card}</div>
+        <>{card}</>
     )
 }
-
