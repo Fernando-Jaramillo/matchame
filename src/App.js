@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Card from './Card.js';
+import Board from './Board.js';
 const c1 = './1.jpg';
 const c2 = "./2.jpg";
 const c3 = "./3.jpg";
@@ -36,18 +37,7 @@ flipCard(index){
 
   render(){
       return (
-          <div>
-              <Card status={this.state.statuses[0]} face={this.state.faces[0]} clicker={() => this.flipCard(0)} />
-              <Card status={this.state.statuses[1]} face={this.state.faces[1]} clicker={() => this.flipCard(1)} />
-              <Card status={this.state.statuses[2]} face={this.state.faces[2]} clicker={() => this.flipCard(2)} />
-              <Card status={this.state.statuses[3]} face={this.state.faces[3]} clicker={() => this.flipCard(3)} />
-              <Card status={this.state.statuses[4]} face={this.state.faces[4]} clicker={() => this.flipCard(4)} />
-              <Card status={this.state.statuses[5]} face={this.state.faces[5]} clicker={() => this.flipCard(5)} />
-              <Card status={this.state.statuses[6]} face={this.state.faces[6]} clicker={() => this.flipCard(6)} />
-              <Card status={this.state.statuses[7]} face={this.state.faces[7]} clicker={() => this.flipCard(7)} />
-              <Card status={this.state.statuses[8]} face={this.state.faces[8]} clicker={() => this.flipCard(8)} />
-              <Card status={this.state.statuses[9]} face={this.state.faces[9]} clicker={() => this.flipCard(9)} />
-          </div>
+        <Board faces = {this.state.faces} statuses = {this.state.statuses} flipCard={(i) => this.flipCard(i)}/>
       )
   }
 }
