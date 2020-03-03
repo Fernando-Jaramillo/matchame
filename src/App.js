@@ -52,3 +52,6 @@ flipCard(index){
   }
 }
 export default App;
+
+
+// jus an intsnace AAAAAAAAAA
