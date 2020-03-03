@@ -1,5 +1,5 @@
 import React from 'react';
-const back = './back.png';
+const back = './backcard.jpg';
 
 export default function Card({face, clicker, status}){
     let card;
