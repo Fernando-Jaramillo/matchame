@@ -31,9 +31,12 @@ flipCard(index){
       statuses[index] = 'down'
   }else{
       statuses[index] = 'up'
+      setTimeout(() => this.flipCard(index), 3000);
   }
   this.setState({statuses: statuses})
+
 }
+
 
   render(){
       return (
@@ -42,6 +45,3 @@ flipCard(index){
   }
 }
 export default App;
-
-
-// jus an intsnace AAAAAAAAAA
