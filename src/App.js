@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Card from './Card.js';
+import Board from './Board.js'
 const c1 = './1.jpg';
 const c2 = "./2.jpg";
 const c3 = "./3.jpg";
@@ -47,6 +48,7 @@ flipCard(index){
               <Card status={this.state.statuses[7]} face={this.state.faces[7]} clicker={() => this.flipCard(7)} />
               <Card status={this.state.statuses[8]} face={this.state.faces[8]} clicker={() => this.flipCard(8)} />
               <Card status={this.state.statuses[9]} face={this.state.faces[9]} clicker={() => this.flipCard(9)} />
+              <Board />
           </div>
       )
   }
