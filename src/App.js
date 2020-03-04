@@ -75,5 +75,3 @@ flipCard(index){
   }
 }
 export default App;
-
-
