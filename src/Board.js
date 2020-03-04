@@ -1,14 +1,22 @@
 import React from 'react';
 import './Board.css';
 import Card from './Card.js';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 
 export default function Board(props) {
     return (
         <div className="background">
             <div className="gameboard">
-                <div className="scorebox">
-                    Chances:
+                <div className="scorebox position">
+                Chances:
+                <Link to='/' type="button" class="btn btn-outline-light ">Home</Link>
+                <Link type="button" class="btn btn-outline-light bn btn-size">Try again</Link>
                 </div>
                 <div className="cardarea">
                     <div className="row1">

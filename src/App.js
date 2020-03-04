@@ -59,6 +59,7 @@ flipCard(index){
         <Switch>
           <Route path='/card'>
           <Board faces = {this.state.faces} statuses = {this.state.statuses} flipCard={(i) => this.flipCard(i)}/>
+
           </Route>
 
           <Route path='/'>
