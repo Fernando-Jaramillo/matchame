@@ -1,12 +1,23 @@
 import React from 'react';
 import './App.css';
 import Card from './Card.js';
+import Home from './Home.js';
 import Board from './Board.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 const c1 = './1.jpg';
 const c2 = "./2.jpg";
 const c3 = "./3.jpg";
 const c4 = "./4.jpg";
 const c5 = "./5.jpg";
+const button = './button.png';
+
 
 class App extends React.Component {
   constructor(props){
@@ -24,6 +35,10 @@ class App extends React.Component {
   }
   this.state = this.initialState
   }
+  
+  resetState = () => {
+    this.setState({statuses: this.initialState.statuses, face: this.initialState.faces})
+  }
 
 flipCard(index){
   let statuses = this.state.statuses.slice()
@@ -37,11 +52,29 @@ flipCard(index){
 
 }
 
-
-  render(){
+  render(){ 
       return (
-        <Board faces = {this.state.faces} statuses = {this.state.statuses} flipCard={(i) => this.flipCard(i)}/>
+        <>
+        <div>
+          <Router >
+        <div>
+        <Switch>
+          <Route path='/card'>
+          <Board faces = {this.state.faces} statuses = {this.state.statuses} flipCard={(i) => this.flipCard(i)}/>
+          </Route>
+
+          <Route path='/'>
+            <Home />
+          </Route>
+        </Switch>
+        </div>
+      </Router>
+          </div>
+          
+        
+        </>
       )
   }
 }
 export default App;
+
