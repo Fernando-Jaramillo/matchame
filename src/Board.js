@@ -1,9 +1,27 @@
 import React from 'react';
 import './Board.css';
 import Card from './Card.js';
+let cardsFlipped = [];
+
 
 
 export default function Board(props) {
+    function checkForMatches(){
+
+        if (cardsFlipped.length == 2){
+          if (cardsFlipped[0] == cardsFlipped[1]) {
+            cardsFlipped.pop()
+            cardsFlipped.pop()
+          } else {
+            // flip card 1 with setTimeout(() => this.flipCard(index), 2000);
+            // flip card 2 with setTimeout(() => this.flipCard(index), 2000);
+            cardsFlipped.pop()
+            cardsFlipped.pop()
+          }
+        }
+      console.log(cardsFlipped)
+      }
+
     return (
         <div className="background">
             <div className="gameboard">
@@ -12,7 +30,7 @@ export default function Board(props) {
                 </div>
                 <div className="cardarea">
                     <div className="row1">
-                        <Card status={props.statuses[0]} face={props.faces[0]} clicker={() => props.flipCard(0)} />
+                        <Card status={props.statuses[0]} face={props.faces[0]} clicker={() => props.flipCard(0)} />  
                         <Card status={props.statuses[1]} face={props.faces[1]} clicker={() => props.flipCard(1)} />
                         <Card status={props.statuses[2]} face={props.faces[2]} clicker={() => props.flipCard(2)} />
                         <Card status={props.statuses[3]} face={props.faces[3]} clicker={() => props.flipCard(3)} />
