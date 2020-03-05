@@ -10,13 +10,11 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
 const c1 = './1.jpg';
 const c2 = "./2.jpg";
 const c3 = "./3.jpg";
 const c4 = "./4.jpg";
 const c5 = "./5.jpg";
-const button = './button.png';
 
 
 class App extends React.Component {
@@ -25,9 +23,9 @@ class App extends React.Component {
     let cards = [];
     var c = [c1, c2, c3, c4, c5, c1, c2, c3, c4, c5];
     for(let i = 0; i < 10; i++){
-        var ind = Math.floor(Math.random()*(c.length));
-        var random = c.splice(ind,1);
-        cards = cards.concat(random);
+      var ind = Math.floor(Math.random()*(c.length));
+      var random = c.splice(ind,1);
+      cards = cards.concat(random);
     }
   this.initialState = {
       statuses: ["down", "down", "down", "down", "down", "down", "down", "down", "down", "down"],
@@ -38,6 +36,7 @@ class App extends React.Component {
   
   resetState = () => {
     this.setState({statuses: this.initialState.statuses, face: this.initialState.faces})
+    
   }
 
 flipCard(index){
@@ -46,7 +45,7 @@ flipCard(index){
       statuses[index] = 'down'
   }else{
       statuses[index] = 'up'
-      setTimeout(() => this.flipCard(index), 3000);
+      //setTimeout(() => this.flipCard(index), 3000);
   }
   this.setState({statuses: statuses})
 
@@ -60,7 +59,7 @@ flipCard(index){
         <div>
         <Switch>
           <Route path='/card'>
-          <Board faces = {this.state.faces} statuses = {this.state.statuses} flipCard={(i) => this.flipCard(i)}/>
+          <Board faces = {this.state.faces} statuses = {this.state.statuses} flipCard={(i) => this.flipCard(i)} resetState={() => this.resetState()}/>
 
           </Route>
 

@@ -1,22 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Board.css';
 import Card from './Card.js';
 import {
     BrowserRouter as Router,
-    Switch,
-    Route,
     Link
   } from "react-router-dom";
 
 
 export default function Board(props) {
+    const [count, setCount] = useState(3);
+
     return (
         <div className="background">
             <div className="gameboard">
                 <div className="scorebox position">
-                Chances:
+                <p>Chances: {count} </p> 
                 <Link to='/' type="button" class="btn btn-outline-light ">Home</Link>
-                <Link type="button" class="btn btn-outline-light bn btn-size">Try again</Link>
+                <button class="btn btn-info button-size" onClick={ () => props.resetState() }>Try again</button>
                 </div>
                 <div className="cardarea">
                     <div className="row1">

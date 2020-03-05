@@ -1,6 +1,5 @@
 import React from 'react';
 import './Home.css';
-import Board from './Board.js';
 import {
     BrowserRouter as Router,
     Switch,
