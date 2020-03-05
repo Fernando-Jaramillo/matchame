@@ -2,7 +2,7 @@ import React from 'react';
 const back = './backcard.jpg';
 
 export default function Card({face, clicker, status}){
-    let card;
+    let card;     
         if(status === 'up'){
             card = <img className='sizecards' src={face} id='c1' onClick={() => clicker()}/>
 
