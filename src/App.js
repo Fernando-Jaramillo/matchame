@@ -44,7 +44,7 @@ class App extends React.Component {
   flipCheck(index){
     this.flipCard(index)
     this.checkForMatches()
-    console.log(cardsFlipped.length)
+    console.log(cardsFlipped)
   }
   flipCard(index){
     let statuses = this.state.statuses.slice();
@@ -57,15 +57,26 @@ class App extends React.Component {
     cardsFlipped.push(index)
   }
 
+  flipCard2(index){
+    let statuses = this.state.statuses.slice();
+    if (statuses[index] === 'up'){
+        statuses[index] = 'down'
+    }else{
+        statuses[index] = 'up'
+    }
+    this.setState({statuses: statuses})
+  }
+
   checkForMatches(){
     if (cardsFlipped.length == 2){
       if (this.state.faces[cardsFlipped[0]] == this.state.faces[cardsFlipped[1]]) { 
       } else {
-        let [card1, card2] = cardsFlipped.slice()
-        setTimeout(() => this.flipCard(card1), 1000);
-        setTimeout(() => this.flipCard(card2), 1000);
+        let [card1, card2] = cardsFlipped
+        setTimeout(() => this.flipCard2(card1), 1000);
+        setTimeout(() => this.flipCard2(card2), 1000);
       }
-      cardsFlipped = []
+      cardsFlipped.pop()
+      cardsFlipped.pop()
     }
   }
 

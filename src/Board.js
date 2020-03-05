@@ -6,22 +6,6 @@ let cardsFlipped = [];
 
 
 export default function Board(props) {
-    function checkForMatches(){
-
-        if (cardsFlipped.length == 2){
-          if (cardsFlipped[0] == cardsFlipped[1]) {
-            cardsFlipped.pop()
-            cardsFlipped.pop()
-          } else {
-            // flip card 1 with setTimeout(() => this.flipCard(index), 2000);
-            // flip card 2 with setTimeout(() => this.flipCard(index), 2000);
-            cardsFlipped.pop()
-            cardsFlipped.pop()
-          }
-        }
-      console.log(cardsFlipped)
-      }
-
     return (
         <div className="background">
             <div className="gameboard">
