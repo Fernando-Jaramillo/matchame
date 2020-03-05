@@ -6,7 +6,7 @@ import {
     Link
   } from "react-router-dom";
 
-
+  
 export default function Board(props) {
     const [count, setCount] = useState(3);
 
@@ -20,7 +20,7 @@ export default function Board(props) {
                 </div>
                 <div className="cardarea">
                     <div className="row1">
-                        <Card status={props.statuses[0]} face={props.faces[0]} clicker={() => props.flipCard(0)} />
+                        <Card status={props.statuses[0]} face={props.faces[0]} clicker={() => props.flipCard(0)} />  
                         <Card status={props.statuses[1]} face={props.faces[1]} clicker={() => props.flipCard(1)} />
                         <Card status={props.statuses[2]} face={props.faces[2]} clicker={() => props.flipCard(2)} />
                         <Card status={props.statuses[3]} face={props.faces[3]} clicker={() => props.flipCard(3)} />

@@ -15,6 +15,7 @@ const c2 = "./2.jpg";
 const c3 = "./3.jpg";
 const c4 = "./4.jpg";
 const c5 = "./5.jpg";
+let cardsFlipped = [];
 
 
 class App extends React.Component {
@@ -27,29 +28,56 @@ class App extends React.Component {
       var random = c.splice(ind,1);
       cards = cards.concat(random);
     }
-  this.initialState = {
-      statuses: ["down", "down", "down", "down", "down", "down", "down", "down", "down", "down"],
-      faces: cards,
-  }
-  this.state = this.initialState
+    this.initialState = {
+        statuses: ["down", "down", "down", "down", "down", "down", "down", "down", "down", "down"],
+        faces: cards,
+    }
+    this.state = this.initialState
   }
   
   resetState = () => {
     this.setState({statuses: this.initialState.statuses, face: this.initialState.faces})
     
   }
-
-flipCard(index){
-  let statuses = this.state.statuses.slice()
-  if (statuses[index] === 'up'){
-      statuses[index] = 'down'
-  }else{
-      statuses[index] = 'up'
-      //setTimeout(() => this.flipCard(index), 3000);
+  
+  flipCheck(index){
+    this.flipCard(index)
+    this.checkForMatches()
+    console.log(cardsFlipped)
   }
-  this.setState({statuses: statuses})
+  flipCard(index){
+    let statuses = this.state.statuses.slice();
+    if (statuses[index] === 'up'){
+        statuses[index] = 'down'
+    }else{
+        statuses[index] = 'up'
+    }
+    this.setState({statuses: statuses})
+    cardsFlipped.push(index)
+  }
 
-}
+  flipCard2(index){
+    let statuses = this.state.statuses.slice();
+    if (statuses[index] === 'up'){
+        statuses[index] = 'down'
+    }else{
+        statuses[index] = 'up'
+    }
+    this.setState({statuses: statuses})
+  }
+
+  checkForMatches(){
+    if (cardsFlipped.length == 2){
+      if (this.state.faces[cardsFlipped[0]] == this.state.faces[cardsFlipped[1]]) { 
+      } else {
+        let [card1, card2] = cardsFlipped
+        setTimeout(() => this.flipCard2(card1), 1000);
+        setTimeout(() => this.flipCard2(card2), 1000);
+      }
+      cardsFlipped.pop()
+      cardsFlipped.pop()
+    }
+  }
 
   render(){ 
       return (
@@ -59,8 +87,7 @@ flipCard(index){
         <div>
         <Switch>
           <Route path='/card'>
-          <Board faces = {this.state.faces} statuses = {this.state.statuses} flipCard={(i) => this.flipCard(i)} resetState={() => this.resetState()}/>
-
+          <Board faces = {this.state.faces} statuses = {this.state.statuses} flipCard={(i) => this.flipCheck(i)}/>
           </Route>
 
           <Route path='/'>
