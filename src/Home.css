@@ -6,16 +6,17 @@
 }
 
 .button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 900px;
+    display: grid;
+    grid-template-columns: 1fr ;
+    grid-template-rows: 75% 5% 30%;
+    height: 100vh;
 }
 
-.size{
+.size2{
     width: 150px;
     height: 40px;
-    margin-top: 400px;
     border: 5px;
     border-radius: 5px;
+    grid-row-start: 2;
+    place-self: center;
 }

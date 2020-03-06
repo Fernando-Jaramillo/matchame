@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import soundfile from './BgSound.mp3'
+
+var audio = new Audio(soundfile)
+window.onload = audio.play()
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
