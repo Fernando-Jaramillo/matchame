@@ -1,16 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Board.css';
 import Card from './Card.js';
-let cardsFlipped = [];
+import {misses} from './App.js'
+import {Howl, Howler} from 'howler';
 
+import {
+    BrowserRouter as Router,
+    Link
+  } from "react-router-dom";
+  
+  const audioClips = {sound2: 'buttons.mp3'}
 
 
 export default function Board(props) {
+    const [count, setCount]= useState(5);
+    const soundPlay = (src) => {
+        const sound2 = new Howl ({
+          src,
+          html5: true
+        })
+        sound2.play()
+      }
     return (
         <div className="background">
             <div className="gameboard">
-                <div className="scorebox">
-                    Chances:
+                <div className="scorebox position">
+                <p>Chances: {5 - misses.length} </p> 
                 </div>
                 <div className="cardarea">
                     <div className="row1">
