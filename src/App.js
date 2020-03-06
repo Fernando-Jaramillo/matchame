@@ -1,21 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import Card from './Card.js';
+import './Card.css'
 import Home from './Home.js';
 import Board from './Board.js';
+import GameOver from './GameOver.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Howl, Howler} from 'howler';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Redirect,
 } from "react-router-dom";
 const c1 = './1.jpg';
 const c2 = "./2.jpg";
 const c3 = "./3.jpg";
 const c4 = "./4.jpg";
 const c5 = "./5.jpg";
+const audioClips = {sound: 'flsound.mp3', sound3: 'didit.mp3', sound4: 'dead.mp3'}
 let cardsFlipped = [];
+export let misses = [];
+
 
 
 class App extends React.Component {
@@ -37,14 +42,25 @@ class App extends React.Component {
   
   resetState = () => {
     this.setState({statuses: this.initialState.statuses, face: this.initialState.faces})
-    
   }
   
+  soundPlay = (src) => {
+    const sound = new Howl ({
+      src,
+      html5: true
+    })
+    sound.play()
+  }
+
   flipCheck(index){
     this.flipCard(index)
     this.checkForMatches()
-    console.log(cardsFlipped)
+    if (misses.length === 5){
+      this.soundPlay(audioClips.sound4)
+      window.location = './Game_Over';
+    }
   }
+
   flipCard(index){
     let statuses = this.state.statuses.slice();
     if (statuses[index] === 'up'){
@@ -53,10 +69,11 @@ class App extends React.Component {
         statuses[index] = 'up'
     }
     this.setState({statuses: statuses})
+    this.soundPlay(audioClips.sound)
     cardsFlipped.push(index)
   }
 
-  flipCard2(index){
+  flipBack(index){
     let statuses = this.state.statuses.slice();
     if (statuses[index] === 'up'){
         statuses[index] = 'down'
@@ -64,15 +81,26 @@ class App extends React.Component {
         statuses[index] = 'up'
     }
     this.setState({statuses: statuses})
+    this.soundPlay(audioClips.sound)
+
   }
 
   checkForMatches(){
+    
     if (cardsFlipped.length == 2){
       if (this.state.faces[cardsFlipped[0]] == this.state.faces[cardsFlipped[1]]) { 
+        let index1 = cardsFlipped[0]
+        let index2 = cardsFlipped[1]
+        document.getElementsByClassName("sizecards")[index1].classList.add("card--move")
+        document.getElementsByClassName("sizecards")[index2].classList.add("card--move")
+        this.soundPlay(audioClips.sound3)
       } else {
         let [card1, card2] = cardsFlipped
-        setTimeout(() => this.flipCard2(card1), 1000);
-        setTimeout(() => this.flipCard2(card2), 1000);
+        setTimeout(() => this.flipBack(card1), 1000);
+        setTimeout(() => this.flipBack(card2), 1000);
+        misses.push(1)
+
+
       }
       cardsFlipped.pop()
       cardsFlipped.pop()
@@ -88,6 +116,10 @@ class App extends React.Component {
         <Switch>
           <Route path='/card'>
           <Board faces = {this.state.faces} statuses = {this.state.statuses} flipCard={(i) => this.flipCheck(i)}/>
+          </Route>
+
+          <Route path='/Game_Over'>
+            <GameOver/>
           </Route>
 
           <Route path='/'>

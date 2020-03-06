@@ -35,10 +35,10 @@
     flex-wrap: wrap;
 }
 .sizecards{
-    height: 220px;
+    height: 248px;
     width: auto;
     border-radius: 5px;
-    margin-left: 2em;
+    margin-left: 1em;
     margin-right: 1em;
     margin-top: 1em;
     margin-bottom: 1em;
@@ -58,3 +58,4 @@
 .btn-size{
     margin-right: 50px;
 }
+
