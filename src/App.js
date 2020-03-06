@@ -3,6 +3,7 @@ import './App.css';
 import Card from './Card.js';
 import Home from './Home.js';
 import Board from './Board.js';
+import {Howl, Howler} from 'howler';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
@@ -11,12 +12,13 @@ import {
   Link
 } from "react-router-dom";
 
+const audioClips = {sound: 'flsound.mp3'}
 const c1 = './1.jpg';
 const c2 = "./2.jpg";
 const c3 = "./3.jpg";
 const c4 = "./4.jpg";
 const c5 = "./5.jpg";
-const button = './button.png';
+
 
 
 class App extends React.Component {
@@ -40,17 +42,28 @@ class App extends React.Component {
     this.setState({statuses: this.initialState.statuses, face: this.initialState.faces})
   }
 
-flipCard(index){
+  soundPlay = (src) => {
+    const sound = new Howl ({
+      src,
+      html5: true
+    })
+    sound.play()
+ }
+
+ flipCard(index){
   let statuses = this.state.statuses.slice()
   if (statuses[index] === 'up'){
       statuses[index] = 'down'
   }else{
       statuses[index] = 'up'
-      setTimeout(() => this.flipCard(index), 3000);
   }
   this.setState({statuses: statuses})
-
+  this.soundPlay(audioClips.sound)
 }
+
+
+// time to take to make the function
+// setTimeout(() => this.flipCard(index), 3000);
 
   render(){ 
       return (
@@ -60,7 +73,7 @@ flipCard(index){
         <div>
         <Switch>
           <Route path='/card'>
-          <Board faces = {this.state.faces} statuses = {this.state.statuses} flipCard={(i) => this.flipCard(i)}/>
+          <Board faces = {this.state.faces} statuses = {this.state.statuses} flipCard={(i) => this.flipCard(i)} />
           </Route>
 
           <Route path='/'>
@@ -77,4 +90,3 @@ flipCard(index){
   }
 }
 export default App;
-
