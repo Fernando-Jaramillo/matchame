@@ -12,11 +12,13 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+
 const c1 = './1.jpg';
 const c2 = "./2.jpg";
 const c3 = "./3.jpg";
 const c4 = "./4.jpg";
 const c5 = "./5.jpg";
+
 const audioClips = {sound: 'flsound.mp3', sound3: 'didit.mp3', sound4: 'dead.mp3'}
 let cardsFlipped = [];
 export let misses = [];
@@ -107,6 +109,10 @@ class App extends React.Component {
     }
   }
 
+
+// time to take to make the function
+// setTimeout(() => this.flipCard(index), 3000);
+
   render(){ 
       return (
         <>
@@ -115,6 +121,7 @@ class App extends React.Component {
         <div>
         <Switch>
           <Route path='/card'>
+
           <Board faces = {this.state.faces} statuses = {this.state.statuses} flipCard={(i) => this.flipCheck(i)}/>
           </Route>
 
@@ -136,4 +143,3 @@ class App extends React.Component {
   }
 }
 export default App;
-

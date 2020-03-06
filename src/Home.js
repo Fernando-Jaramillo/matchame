@@ -22,3 +22,8 @@ export default function Home(){
     </div>
     )
 }
+
+
+
+
+{/* <button onClick={() => setCount(count + 1)}></button> */}
