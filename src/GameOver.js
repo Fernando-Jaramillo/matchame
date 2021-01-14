@@ -17,7 +17,7 @@ export default function GameOver(){
       }
 
     return(
-        <div className="bg-gameOver position button2">
+        <div className="bg-gameOver button2">
             {soundPlay(audioClips.sound4)}
             <Link to='/card' type="button" className="btn btn-outline-light bn btn-size size3" onClick={() => soundPlay(audioClips.sound4)}> TRY AGAIN</Link>
             <Link to='/' type="button" className="btn btn-outline-light bn btn-size size4" onClick={() => soundPlay(audioClips.sound4)}>HOME</Link>
