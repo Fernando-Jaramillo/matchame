@@ -1,5 +1,6 @@
 .bg-gameOver{
     background-image: url("/gameOver.png");
+    background-position: top center;
     background-size: cover;
     height: 100vh;
     width: 100vw;
@@ -13,28 +14,39 @@
 
 }
 
-.size3{
+.size3, .size4{
     width: 150px;
     height: 40px;
     border: 5px;
     border-radius: 5px;
     grid-row-start: 1;
-    place-self: center;
+    position: relative;
+    top: 60px;
+
 }
 
 .button2{
     display: grid;
-    grid-template-columns: 30% 30%;
-    grid-template-rows: 40% 30% 30%;
-    height: 100vh;
+    grid-template-columns: 30% 20% 50%;
+    grid-template-rows: 30% 70%;
+    justify-items: center;
 }
 
-.size4{
-    width: 150px;
-    height: 40px;
-    border: 5px;
-    border-radius: 5px;
-    grid-row-start: 1;
-    place-self: center;
-    margin-right: 990px;
+
+@media screen and (max-width: 800px){
+    .button2{
+        display: grid;
+        grid-template: 8% 8% auto / 30% 40% 30%;
+    }
+    .size3, .size4{
+        position: relative;
+        top: 40px;
+    }
+    .size3 {
+        grid-area: 1 / 2
+    
+    }
+    .size4{
+    grid-area: 2 / 2/ 3 /3;
+    }
 }
