@@ -1,8 +1,10 @@
 .bg-home{
+    background-image: url('/home-background.jpg');
+    position: auto center;
+    background-size: cover;
+    background-position: center;
     height: 100vh;
     width: 100vw;
-    background-image: url("/background-home.png");
-    background-size: cover;
 }
 
 .button{

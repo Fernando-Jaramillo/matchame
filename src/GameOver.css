@@ -1,5 +1,5 @@
 .bg-gameOver{
-    background-image: url("/gameOver.png");
+    background-image: url("/dead-background.jpg");
     background-size: cover;
     height: 100vh;
     width: 100vw;
@@ -26,13 +26,16 @@
 
 .button2{
     display: grid;
-    grid-template-columns: 30% 20% 50%;
+    grid-template-columns: 35% 5% 55%;
     grid-template-rows: 30% 70%;
     justify-items: center;
 }
 
 
 @media screen and (max-width: 800px){
+    .bg-gameOver{
+        background-position: -60px;
+    }
     .button2{
         display: grid;
         grid-template: 8% 8% auto / 30% 40% 30%;
