@@ -1,4 +1,5 @@
 import React from 'react';
+import './Board.css';
 const back = './backcard.jpg';
 
 export default function Card({face, clicker, status}){
